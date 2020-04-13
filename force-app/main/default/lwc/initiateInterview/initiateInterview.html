@@ -1,0 +1,39 @@
+<template>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col">
+                <div class="slds-m-top_medium slds-m-bottom_x-large">
+                    <div class="slds-p-around_medium lgc-bg">
+                        <lightning-input type="text" name="firstName" label="First Name" placeholder="type here..." onchange={handleFormInputChange} required>
+                        </lightning-input>
+                    </div>
+                    <div class="slds-p-around_medium lgc-bg">
+                        <lightning-input type="text" name="lastName" label="Last Name" placeholder="type here..." onchange={handleFormInputChange} required>
+                        </lightning-input>
+                    </div>
+                    <div class="slds-p-around_medium lgc-bg">
+                        <lightning-input type="text" name="company" label="Current Company" placeholder="type here..." onchange={handleFormInputChange}>
+                        </lightning-input>
+                    </div>
+                    <div class="slds-p-around_medium lgc-bg">
+                        <lightning-textarea name="notes" label="Notes" placeholder="type here..." onchange={handleFormInputChange}></lightning-textarea>
+                    </div>
+                    <div class="slds-p-around_medium lgc-bg">
+                        <lightning-input type="file" label="Attachment" accept="image/png, image/jpg, .zip" onchange={handleFormInputChange}></lightning-input>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-col">
+                <div class="slds-m-top_medium slds-m-bottom_x-large">
+                    <div class="slds-p-around_medium lgc-bg">
+                        <lightning-dual-listbox name="roles" label="Roles" source-label="Available"
+                            selected-label="Selected" field-level-help="Select role for the Interview" options={options}
+                            onchange={handleFormInputChange}></lightning-dual-listbox>
+                    </div>
+                    <div class="slds-p-around_medium lgc-bg">
+                        <lightning-combobox name="level" label="Difficulty Level" value="" placeholder="Select Level"
+                            options={levels} onchange={handleFormInputChange} required></lightning-combobox>
+                    </div>
+                </div>
+            </div>
+        </div>
+</template>

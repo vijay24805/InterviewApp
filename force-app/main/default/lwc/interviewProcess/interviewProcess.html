@@ -1,0 +1,13 @@
+<template>
+    <lightning-card title="Candidate Information" icon-name="standard:insights">
+    <c-initiate-interview oninitiateinterview={initiateInterview}></c-initiate-interview>
+    <footer role="contentinfo" class="slds-p-around_medium">
+        <div class="slds-align_absolute-center ">
+            <lightning-button variant="brand" label="Cancel" title="Cancel" onclick={handleCancel} icon-position="right"
+                class="slds-m-left_x-small"></lightning-button>
+            <lightning-button variant="brand" label="Next" title="Next" onclick={handleNext} icon-position="right"
+                class="slds-m-left_x-small"></lightning-button>
+        </div>
+    </footer>
+</lightning-card>
+</template>
