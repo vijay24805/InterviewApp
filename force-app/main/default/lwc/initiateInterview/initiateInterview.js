@@ -5,16 +5,15 @@ import { NavigationMixin, CurrentPageReference } from 'lightning/navigation';
 export default class InitiateInterview extends LightningElement {
 
     roles = [];
-    level = 'begin';
+    level = 'beginner';
     firstName;
     lastName;
-    company;
-    notes;
+    company = '';
+    notes = '';
 
     // Files
-    fileName = '';
+    fileName;
     fileContent;
-    @wire(CurrentPageReference) pageRef;
 
     get options() {
         return [
@@ -80,8 +79,15 @@ export default class InitiateInterview extends LightningElement {
     }
 
     createInitiateInterviewEvent() {
+        let isValid = false;
+        console.log('first=> ' + this.firstName + ' ' + 'last => ' + this.lastName);
+        if ((typeof this.firstName != 'undefined' && this.firstName.length != 0) &&
+            typeof this.lastName != 'undefined' && this.lastName.length != 0) {
+                isValid = true;
+        }
+
         const data = JSON.stringify({
-            page: "1", firstName: this.firstName, lastName: this.lastName, company: this.company,
+            page: "1", firstName: this.firstName, lastName: this.lastName, company: this.company, reqValidation: isValid,
             notes: this.notes, roles: this.roles, level: this.level, fileName: this.fileName, file: this.fileContent
         });
         const nextEvnt = new CustomEvent('initiateinterview', {

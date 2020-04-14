@@ -41,3 +41,7 @@ metaDataListInfo
 
 # VS Code project settings
 .vscode/
+
+
+# practice Code
+force-app/main/default/lwc/grid

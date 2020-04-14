@@ -1,13 +1,14 @@
 import { LightningElement } from 'lwc';
 import createInterview from '@salesforce/apex/InitiateInterviewController.createInterview';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent'
-
+import { reduceErrors } from 'c/ldsUtils';
 export default class InterviewProcess extends LightningElement {
 
     interviewInputs;
-
+    isInterviewQuesPage=false;
+    isInitiateInterviewPage = true;
     initiateInterview(event) {
-        //console.log('handling event in parent=> ' + JSON.stringify(event.detail));
+        console.log('handling event in parent=> ' + JSON.stringify(event.detail));
         this.interviewInputs = JSON.stringify(event.detail);
     }
 
