@@ -13,7 +13,7 @@ export default class InitiateInterview extends LightningElement {
 
     // Files
     fileName;
-    fileContent;
+    fileContent = '';
 
     get options() {
         return [
@@ -83,15 +83,13 @@ export default class InitiateInterview extends LightningElement {
         console.log('first=> ' + this.firstName + ' ' + 'last => ' + this.lastName);
         if ((typeof this.firstName != 'undefined' && this.firstName.length != 0) &&
             typeof this.lastName != 'undefined' && this.lastName.length != 0) {
-                isValid = true;
+            isValid = true;
         }
-
-        const data = JSON.stringify({
-            page: "1", firstName: this.firstName, lastName: this.lastName, company: this.company, reqValidation: isValid,
-            notes: this.notes, roles: this.roles, level: this.level, fileName: this.fileName, file: this.fileContent
-        });
         const nextEvnt = new CustomEvent('initiateinterview', {
-            detail: { data }
+            detail: {
+                page: "1", firstName: this.firstName, lastName: this.lastName, company: this.company, reqValidation: isValid,
+                notes: this.notes, roles: this.roles, level: this.level, fileName: this.fileName, file: this.fileContent
+            }
         });
         this.dispatchEvent(nextEvnt);
     }

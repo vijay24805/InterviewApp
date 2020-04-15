@@ -3,18 +3,17 @@ public with sharing class InitiateInterviewController {
 
     }
     @AuraEnabled
-    public static String createInterview(String candidateData){
+    public static Object createInterview(String candidateData){
         system.debug('JSON => ' + candidateData);
+        
         String result;
         if(candidateData!=null){
-            Map<String, Object> inputStr = (Map<String, Object>)JSON.deserializeUntyped(candidateData);
-            String resp = (String)inputStr.get('data');
-            Map<String, Object> data = (Map<String, Object>)JSON.deserializeUntyped(resp);
+            Map<String, Object> data = (Map<String, Object>)JSON.deserializeUntyped(candidateData);
             system.debug('data => ' + data);
             
             // Create Contact record and Interview Record.
 
-            if(data.containskey('file')){
+            if(!String.IsEmpty((String)data.get('file'))){
                 String fileData = (String)data.get('file');
                 // inserting file
                 ContentVersion cv = new ContentVersion();
@@ -33,6 +32,6 @@ public with sharing class InitiateInterviewController {
             result= 'No Data';
         }
 
-        return result;
+        return candidateData;
     }
 }
